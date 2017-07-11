@@ -20,21 +20,19 @@ zero_out_module = tf.load_op_library('./zero_out.so')
 with tf.device('/cpu:0'):
  ret_cpu = zero_out_module.zero_out([[1, 2], [3, 4]])
 
-# with tf.device('/gpu:0'):
-#   ret_gpu = zero_out_module.zero_out([[1, 2], [3, 4]])
+with tf.device('/gpu:0'):
+  ret_gpu = zero_out_module.zero_out([[1, 2], [3, 4]])
 
 with tf.Session(config=tf.ConfigProto(
                 log_device_placement=True
                 # allow_soft_placement=True
             )) as sess:
 
-  # print('running gpu')
-  # print(sess.run(ret_gpu))
+  print('running gpu')
+  print(sess.run(ret_gpu))
 
   # cpu
   # print('..')
   print('running cpu')
   print(sess.run(ret_cpu))
 
-# print(ret)
-exit(0)
