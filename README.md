@@ -1,2 +1,6 @@
-# tensorflow_custom_op_example
-Custom op for cpu and gpu
+# Zero Out GPU and CPU
+
+usage:
+make gpu
+
+python test.py
